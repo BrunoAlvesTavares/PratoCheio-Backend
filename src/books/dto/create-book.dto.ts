@@ -1,5 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsArray, IsNotEmpty, IsString } from 'class-validator';
+import { IsArray, IsMongoId, IsNotEmpty, IsString } from 'class-validator';
+import { Types } from 'mongoose';
+import { User } from 'src/users/entities/user.entity';
 
 export class CreateBookDto {
   @IsNotEmpty()
@@ -21,4 +23,8 @@ export class CreateBookDto {
   @IsString()
   @ApiProperty()
   state: string;
+
+  @IsMongoId()
+  @ApiProperty({ type: String })
+  trocadoPor: Types.ObjectId | string | User;
 }

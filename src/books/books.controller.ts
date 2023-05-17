@@ -22,7 +22,7 @@ export class BooksController {
 
   @Get()
   findAll() {
-    return this.booksService.findAll();
+    return this.booksService.findAll().populate(['trocadoPor']);
   }
 
   @Get(':id')
