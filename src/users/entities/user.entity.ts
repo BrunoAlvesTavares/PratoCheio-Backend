@@ -15,8 +15,12 @@ export class User {
   @Prop({ required: true })
   password: string;
 
-  @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }] })
-  livrosTrocados: Book[];
+  @Prop({
+    type: String,
+    required: true,
+    enum: ['admin', 'viewer'],
+  })
+  accessLevel: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

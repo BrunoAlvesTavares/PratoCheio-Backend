@@ -22,7 +22,7 @@ export class UsersController {
 
   @Get()
   findAll() {
-    return this.usersService.findAll().populate('livrosTrocados').exec();
+    return this.usersService.findAll().exec();
   }
 
   @Get(':id')

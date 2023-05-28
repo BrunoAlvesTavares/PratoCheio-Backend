@@ -19,7 +19,6 @@ export class Book {
   state: string;
 
   @Prop({
-    required: true,
     type: mongoose.Schema.Types.ObjectId,
     ref: User.name,
   })
