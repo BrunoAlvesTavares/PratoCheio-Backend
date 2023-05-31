@@ -1,7 +1,7 @@
 {
   "version": 2,
   "env": {
-    "MONGO_URI": "@teste"
+    "MONGO_URI": "@env.MONGO_URI"
 },
   "builds": [
       {
