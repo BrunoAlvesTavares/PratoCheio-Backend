@@ -1,8 +1,5 @@
 {
   "version": 2,
-  "env": {
-    "MONGO_URI": "mongodb+srv://bruno:951753@prae.xo7riei.mongodb.net/?retryWrites=true&w=majority"
-  },
   "builds": [
       {
           "src": "src/main.ts",
