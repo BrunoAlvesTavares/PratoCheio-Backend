@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { IsEmail } from 'class-validator';
 import mongoose, { HydratedDocument } from 'mongoose';
 import { Book } from 'src/books/entities/book.entity';
 
@@ -9,7 +10,8 @@ export class User {
   @Prop({ required: true })
   name: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, unique: true })
+  @IsEmail()
   username: string;
 
   @Prop({ required: true })
@@ -18,7 +20,7 @@ export class User {
   @Prop({
     type: String,
     required: true,
-    enum: ['admin', 'viewer'],
+    enum: ['admin', 'user'],
   })
   accessLevel: string;
 }

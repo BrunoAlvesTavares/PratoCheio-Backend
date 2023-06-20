@@ -4,6 +4,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { Model } from 'mongoose';
 import { User, UserDocument } from './entities/user.entity';
 import { InjectModel } from '@nestjs/mongoose';
+import { Types } from 'mongoose';
 
 @Injectable()
 export class UsersService {
@@ -37,7 +38,10 @@ export class UsersService {
     return this.userModel.findByIdAndUpdate(id, updateUserDto);
   }
 
-  remove(id: string[]) {
-    return this.userModel.deleteMany({ _id: { $in: id } });
+  remove(ids: string[]) {
+    const objectIds = ids.map((id) => new Types.ObjectId(id));
+    const stringIds = objectIds.map((objectId) => objectId.toString());
+  
+    return this.userModel.deleteMany({ _id: { $in: stringIds } });
   }
 }

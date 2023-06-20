@@ -1,24 +1,24 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsEmail } from 'class-validator';
+
 export class CreateUserDto {
   @IsNotEmpty()
-  @IsString()
-  @ApiProperty()
+  @ApiProperty({ required: true })
   name: string;
 
   @IsNotEmpty()
-  @IsString()
-  @ApiProperty()
+  @IsEmail()
+  @ApiProperty({ uniqueItems: true })
   username: string;
 
-  @IsString()
-  @ApiProperty()
+  @IsNotEmpty()
+  @ApiProperty({ required: true })
   password: string;
 
   @ApiProperty({
     type: String,
     required: true,
-    enum: ['admin', 'viewer'],
+    enum: ['admin', 'user'],
   })
   accessLevel: string;
 }

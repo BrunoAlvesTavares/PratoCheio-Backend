@@ -10,6 +10,7 @@ import {
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { Types } from 'mongoose';
 
 @Controller('users')
 export class UsersController {
@@ -36,7 +37,12 @@ export class UsersController {
   }
 
   @Delete(':id')
-  remove(@Param('id') ids: string[]) {
-    return this.usersService.remove(ids);
+  remove(@Param('id') ids: string) {
+    const bookIds = ids.split(',');
+    const objectIds = bookIds.map((id) => new Types.ObjectId(id));
+
+    const stringIds = objectIds.map((objectId) => objectId.toString());
+
+    return this.usersService.remove(stringIds);
   }
 }

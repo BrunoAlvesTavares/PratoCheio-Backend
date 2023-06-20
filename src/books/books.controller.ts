@@ -10,6 +10,7 @@ import {
 import { BooksService } from './books.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
+import { Types } from 'mongoose';
 
 @Controller('books')
 export class BooksController {
@@ -36,7 +37,12 @@ export class BooksController {
   }
 
   @Delete(':id')
-  remove(@Param('id') ids: string[]) {
-    return this.booksService.remove(ids);
+  remove(@Param('id') ids: string) {
+    const bookIds = ids.split(',');
+    const objectIds = bookIds.map((id) => new Types.ObjectId(id));
+
+    const stringIds = objectIds.map((objectId) => objectId.toString());
+
+    return this.booksService.remove(stringIds);
   }
 }

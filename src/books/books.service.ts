@@ -3,7 +3,7 @@ import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
 import { Book, BookDocument } from './entities/book.entity';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 
 @Injectable()
 export class BooksService {
@@ -28,7 +28,10 @@ export class BooksService {
     return this.bookModel.findByIdAndUpdate(id, updateBookDto);
   }
 
-  remove(id: string[]) {
-    return this.bookModel.deleteMany({ _id: { $in: id } });
+  remove(ids: string[]) {
+    const objectIds = ids.map((id) => new Types.ObjectId(id));
+    const stringIds = objectIds.map((objectId) => objectId.toString());
+  
+    return this.bookModel.deleteMany({ _id: { $in: stringIds } });
   }
 }
