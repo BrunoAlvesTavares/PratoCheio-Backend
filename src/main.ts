@@ -7,6 +7,6 @@ async function bootstrap() {
 
   app.use(cors()); // adiciona o middleware cors
 
-  await app.listen(3333);
+  await app.listen(process.env.PORT);
 }
 bootstrap();
