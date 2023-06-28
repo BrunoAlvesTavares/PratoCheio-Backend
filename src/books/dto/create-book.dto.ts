@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsArray, IsMongoId, IsNotEmpty, IsString } from 'class-validator';
+import { IsArray, IsEmail, IsMongoId, IsNotEmpty, IsString } from 'class-validator';
 import { Types } from 'mongoose';
 import { User } from 'src/users/entities/user.entity';
 
@@ -13,6 +13,11 @@ export class CreateBookDto {
   @IsString()
   @ApiProperty()
   author: string;
+
+  @IsString()
+  @IsEmail()
+  @ApiProperty()
+  email: string;
 
   @IsNotEmpty()
   @IsArray()

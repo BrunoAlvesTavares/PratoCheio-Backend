@@ -28,6 +28,10 @@ export class BooksService {
     return this.bookModel.findByIdAndUpdate(id, updateBookDto);
   }
 
+  async getReservationsCountByEmail(email: string): Promise<number> {
+    return this.bookModel.countDocuments({ email }).exec();
+  }
+
   remove(ids: string[]) {
     const objectIds = ids.map((id) => new Types.ObjectId(id));
     const stringIds = objectIds.map((objectId) => objectId.toString());
