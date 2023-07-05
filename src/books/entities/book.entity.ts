@@ -13,12 +13,6 @@ export class Book {
   @Prop({ required: true })
   author: string;
 
-  @Prop({ required: true })
-  category: string[];
-
-  @Prop({ required: true })
-  state: string;
-
   @Prop({ default: null })
   @IsEmail()
   email: string; 
