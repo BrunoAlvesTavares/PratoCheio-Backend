@@ -38,6 +38,9 @@ export class UsersService {
     return this.userModel.findByIdAndUpdate(id, updateUserDto);
   }
 
+  findPhoneNumbers() {
+    return this.userModel.find().select('phone').lean();
+  }
   remove(ids: string[]) {
     const objectIds = ids.map((id) => new Types.ObjectId(id));
     const stringIds = objectIds.map((objectId) => objectId.toString());

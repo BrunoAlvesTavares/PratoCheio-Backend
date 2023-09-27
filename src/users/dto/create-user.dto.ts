@@ -13,6 +13,10 @@ export class CreateUserDto {
 
   @IsNotEmpty()
   @ApiProperty({ required: true })
+  phone: string;
+
+  @IsNotEmpty()
+  @ApiProperty({ required: true })
   password: string;
 
   @ApiProperty({

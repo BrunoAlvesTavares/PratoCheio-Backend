@@ -13,13 +13,16 @@ export class User {
   @IsEmail()
   username: string;
 
+  @Prop({ required: true, unique: true })
+  phone: string;
+
   @Prop({ required: true })
   password: string;
 
   @Prop({
     type: String,
     required: true,
-    enum: ['admin', 'user'],
+    enum: ['admin', 'manager', 'user'],
   })
   accessLevel: string;
 }
