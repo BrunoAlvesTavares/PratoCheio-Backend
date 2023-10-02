@@ -8,19 +8,23 @@ export class WhatsappService {
   private client: Client;
 
   constructor(private readonly usersService: UsersService) {
-    const options: ClientOptions = {};
+    try {
+      const options: ClientOptions = {};
 
-    this.client = new Client(options);
+      this.client = new Client(options);
 
-    this.client.on('qr', (qr) => {
-      qrCodeTerminal.generate(qr, { small: true });
-    });
+      this.client.on('qr', (qr) => {
+        qrCodeTerminal.generate(qr, { small: true });
+      });
 
-    this.client.on('ready', async () => {
-      console.log('Conexão feita!');
-    });
+      this.client.on('ready', async () => {
+        console.log('Conexão feita!');
+      });
 
-    this.client.initialize();
+      this.client.initialize();
+    } catch (error) {
+      console.error('Erro ao inicializar o cliente WhatsApp:', error);
+    }
   }
 
   private formatPhoneNumber(phone: string): string {
