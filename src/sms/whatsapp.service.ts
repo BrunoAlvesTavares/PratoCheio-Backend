@@ -8,23 +8,23 @@ export class WhatsappService {
   private client: Client;
 
   constructor(private readonly usersService: UsersService) {
-    try {
-      const options: ClientOptions = {};
+    const options: ClientOptions = {};
 
-      this.client = new Client(options);
+    this.client = new Client(options);
 
-      this.client.on('qr', (qr) => {
-        qrCodeTerminal.generate(qr, { small: true });
-      });
+    this.client.on('qr', (qr) => {
+      qrCodeTerminal.generate(qr, { small: true });
+    });
 
-      this.client.on('ready', async () => {
+    this.client.on('ready', async () => {
+      try {
         console.log('Conexão feita!');
-      });
+      } catch (error) {
+        console.error('Erro durante a conexão:', error);
+      }
+    });
 
-      this.client.initialize();
-    } catch (error) {
-      console.error('Erro ao inicializar o cliente WhatsApp:', error);
-    }
+    this.client.initialize();
   }
 
   private formatPhoneNumber(phone: string): string {
