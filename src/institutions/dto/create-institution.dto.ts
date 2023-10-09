@@ -12,17 +12,20 @@ export class CreateInstitutionDto {
   @ApiProperty({ required: true })
   location: string;
 
-  @ApiProperty()
+  @ApiProperty({ required: true })
   description: string;
 
-  @ApiProperty()
+  @ApiProperty({ required: true })
   establishedYear: number;
 
-  @ApiProperty()
+  @ApiProperty({ required: true })
   contactEmail: string;
 
-  @ApiProperty()
+  @ApiProperty({ required: true })
   website: string;
+
+  @ApiProperty({ required: true })
+  pix: string;
 
   @IsMongoId()
   @ApiProperty({ type: String })

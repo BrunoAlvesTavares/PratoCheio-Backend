@@ -12,17 +12,20 @@ export class Institution {
   @Prop({ required: true })
   location: string;
 
-  @Prop()
+  @Prop({ required: true })
   description: string;
 
-  @Prop()
+  @Prop({ required: true })
   establishedYear: number;
 
-  @Prop()
+  @Prop({ required: true })
   contactEmail: string;
 
   @Prop()
   website: string;
+
+  @Prop()
+  pix: string;
 
   @Prop({
     type: mongoose.Schema.Types.ObjectId,
