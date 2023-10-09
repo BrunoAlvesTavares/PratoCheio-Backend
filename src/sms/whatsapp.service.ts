@@ -24,7 +24,14 @@ export class WhatsappService {
       }
     });
 
-    this.client.initialize();
+    this.client
+      .initialize()
+      .then(() => {
+        console.log('Cliente inicializado com sucesso.');
+      })
+      .catch((error) => {
+        console.error('Erro durante a inicialização do cliente:', error);
+      });
   }
 
   private formatPhoneNumber(phone: string): string {
