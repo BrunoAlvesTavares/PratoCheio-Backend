@@ -13,8 +13,10 @@ import { UpdateInstitutionDto } from './dto/update-institution.dto';
 import { Types } from 'mongoose';
 import { UserFromJwt } from 'auth/models/UserFromJwt';
 import { CurrentUser } from 'auth/decorators/current-user.decorator';
+import { Public } from 'src/decorators/public.decorator';
 
 @Controller('institutions')
+@Public()
 export class InstitutionsController {
   constructor(private readonly institutionsService: InstitutionsService) {}
 
