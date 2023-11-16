@@ -12,7 +12,11 @@ import { InstitutionsModule } from './institutions/institutions.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env.MONGO_URI),
+    MongooseModule.forRoot(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      debug: true,
+    })
     UsersModule,
     AuthModule,
     WhatsappModule,
