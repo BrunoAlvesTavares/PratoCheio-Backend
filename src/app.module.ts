@@ -9,6 +9,9 @@ import { JwtAuthGuard } from 'auth/guards/jwt-auth.guard';
 import { APP_GUARD } from '@nestjs/core';
 import { WhatsappModule } from './sms/whatsapp.module';
 import { InstitutionsModule } from './institutions/institutions.module';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require('dotenv').config();
+
 @Module({
   imports: [
     ConfigModule.forRoot(),
