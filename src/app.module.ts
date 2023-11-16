@@ -16,7 +16,7 @@ import { InstitutionsModule } from './institutions/institutions.module';
       useNewUrlParser: true,
       useUnifiedTopology: true,
       debug: true,
-    })
+    }),
     UsersModule,
     AuthModule,
     WhatsappModule,
