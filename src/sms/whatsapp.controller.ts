@@ -6,8 +6,9 @@ export class WhatsappController {
   constructor(private readonly whatsappService: WhatsappService) {}
 
   @Post('sendMessage')
-  async sendMessage(@Body() messageData: { message: string }) {
-    const { message } = messageData;
-    await this.whatsappService.sendMessagesToUsers(message);
+  async sendMessage(
+    @Body() messageData: { message: string; institutionName: string },
+  ) {
+    await this.whatsappService.sendMessagesToUsers(messageData);
   }
 }

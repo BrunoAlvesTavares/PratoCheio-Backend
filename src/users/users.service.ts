@@ -39,7 +39,7 @@ export class UsersService {
   }
 
   findPhoneNumbers() {
-    return this.userModel.find().select('phone').lean();
+    return this.userModel.find({ accessLevel: 'user' }).select('phone').lean();
   }
   remove(ids: string[]) {
     const objectIds = ids.map((id) => new Types.ObjectId(id));

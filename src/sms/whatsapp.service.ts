@@ -38,16 +38,16 @@ export class WhatsappService {
     return phone.replace(/\s/g, '');
   }
 
-  async sendMessagesToUsers(message) {
+  async sendMessagesToUsers(messageData) {
     try {
       const users: any[] = await this.usersService.findPhoneNumbers();
       const phoneNumbers = users.map((user) => user.phone);
 
       for (const phoneNumber of phoneNumbers) {
         const formattedPhone = this.formatPhoneNumber(phoneNumber);
-        console.log(formattedPhone);
         const chat = await this.client.getChatById(`${formattedPhone}@c.us`);
-        await chat.sendMessage(message);
+        const completeMessage = `A instituição ${messageData.institutionName} informa: ${messageData.message}`;
+        await chat.sendMessage(completeMessage);
       }
     } catch (error) {
       console.error('Erro ao enviar as mensagens!', error);
