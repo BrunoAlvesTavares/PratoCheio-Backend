@@ -9,6 +9,7 @@ import { JwtAuthGuard } from 'auth/guards/jwt-auth.guard';
 import { APP_GUARD } from '@nestjs/core';
 import { WhatsappModule } from './sms/whatsapp.module';
 import { InstitutionsModule } from './institutions/institutions.module';
+import { MessagehistoryModule } from './messagehistory/messagehistory.module';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config();
 
@@ -20,6 +21,7 @@ require('dotenv').config();
     AuthModule,
     WhatsappModule,
     InstitutionsModule,
+    MessagehistoryModule,
   ],
   controllers: [AppController],
   providers: [
